@@ -18,6 +18,9 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    # 👇 ADD THIS SECTION 👇
+    volumes:
+      - ../neurolearn-api:/app
 
   # 3. The Frontend
   web:
@@ -29,7 +32,6 @@ services:
       - api
     environment:
       - NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
-    # Enable hot-reloading for development
     volumes:
       - ../neurolearn-web:/app
       - /app/node_modules
